@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Monitoring Tool</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <style>
+        /* Additional CSS to handle responsiveness */
+        .container {
+            max-width: 100%;
+            overflow-x: auto;
+            color: rgb(8, 9, 9);
+        }
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            color: rgb(10, 10, 10);
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #5b1818;
+            text-align: left;
+            word-wrap: break-word; /* Wrap long URLs */
+        }
+        .long-url {
+            white-space: pre-line; /* Preserve newlines in long URLs */
+        }
+        .action-button {
+            background-color: #007bff;
+            color: #262469;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Adjust width of URL column */
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 30%; /* Adjust the width as needed */
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .top-bar {
+            background-color: #007bff; /* Blue color, you can change it */
+            color: white;
+            padding: 10px 0; /* Adjust as needed */
+            text-align: center;
+        }
+        
+        .top-bar h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <h2>Welcome User</h2>
+        </div>
+    </div>
+    <div class="container">
+        
+        <h3>Add Website</h3>
+        <form id="websiteForm">
+            <input type="text" id="urlInput" placeholder="Enter URL">
+            <button type="submit">Add</button>
+        </form>
+
+        <h2>Monitored Websites</h2>
+        <div class="table-container">
+            <table id="websiteTable">
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>URL</th>
+                        <th>Status Code</th>
+                        <th>Last Checked Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Website data will be populated here -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <a href="#" id="prevPage">PREV</a>
+                <a href="#" id="nextPage">NEXT</a>
+            </div>
+            
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Function to make table fixed while allowing long URLs to wrap
+        $(document).ready(function() {
+            // Calculate and set fixed table height
+            var tableHeight = $('.table-container').height();
+            $('#websiteTable').css('height', tableHeight);
+
+            // Adjust table height on window resize
+            $(window).resize(function() {
+                tableHeight = $('.table-container').height();
+                $('#websiteTable').css('height', tableHeight);
+            });
+        });
+
+      
+       
+    </script>
+</body>
+</html>
